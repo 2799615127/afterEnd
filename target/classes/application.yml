@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xiaoming
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+file:
+  # 本地域名/路径
+  root: http://43.143.216.30:8080/
+  # 文件存储的相对路径
+  path: /data/img/
+  # 上传文件允许的扩展名
+  allowed: png,jpg,jpeg,pdf,bmp
+  
+  #配置mapper
+mybatis.mapper-locations=classpath: mapper/*.xml
+#spring.web.resources.static-locations=classpath:static/,file:static/

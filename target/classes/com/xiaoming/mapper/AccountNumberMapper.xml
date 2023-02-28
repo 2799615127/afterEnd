@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.xiaoming.mapper.AccountNumberMapper">
+    <!--select查询语句-->
+    <select id="getAccountNumberList" resultType="com.xiaoming.model.AccountNumber">
+        select * from xiaoming.accountnumber
+    </select>
+    <select id="queryUserName" resultType="map" parameterType="map">
+        select userName from xiaoming.accountnumber where userName=#{userName}
+    </select>
+    <select id="queryEmail" resultType="map" parameterType="map">
+        select email from xiaoming.accountnumber where email=#{email}
+    </select>
+    <insert id="insertAccountNumber"  parameterType="com.xiaoming.model.AccountNumber">
+		INSERT INTO accountnumber (userName,passWrod,email,logonTime)
+                       VALUES
+                       (#{userName},#{passWrod},#{email},#{logonTime} );
+	</insert>
+	<select id="queryAccountNumber" resultType="com.xiaoming.model.AccountNumber" parameterType="com.xiaoming.model.AccountNumber">
+        select * from xiaoming.accountnumber where userName=#{userName} and passWrod=#{passWrod}
+    </select>
+</mapper>

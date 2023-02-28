@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.xiaoming.mapper.UserLogMapper">
+    <insert id="insertAccountNumber"  parameterType="com.xiaoming.model.UserLog">
+		INSERT INTO `xiaoming`.`userlog`(`userlogHtml`, `userlogTime`, `userlogUpTime`, `userlogTitle`, `userId`) 
+		VALUES (#{userlogHtml}, #{userlogTime}, #{userlogUpTime}, #{userlogTitle}, #{userId});
+	</insert>
+    <select id="getUserLogList" resultType="com.xiaoming.model.UserLog" parameterType="string">
+        select userlogTitle,userlogUpTime,userlogId from xiaoming.userlog where userId=#{userId}
+    </select>
+    <select id="getUserLog" resultType="com.xiaoming.model.UserLog" parameterType="string">
+        select * from xiaoming.userlog where userlogId=#{userlogId}
+    </select>
+    <delete id="deUserLog"  parameterType="string">
+		DELETE FROM userlog WHERE userlogId=#{userlogId}
+	</delete>
+</mapper>
